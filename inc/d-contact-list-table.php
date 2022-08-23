@@ -29,7 +29,7 @@ class D_Contact_List_Table
      */
     public function d_contact_list_table_page()
     {
-        add_menu_page( __('Differenz Contacts', 'differenz-contacts'), __('Differenz Contacts', 'differenz-contacts'), 'manage_options', 'd-contact-list-table.php', array($this, 'd_contact_list_tbl_page') );
+        add_menu_page( __('Custom Contacts', 'custom-contacts'), __('Custom Contacts', 'custom-contacts'), 'manage_options', 'd-contact-list-table.php', array($this, 'd_contact_list_tbl_page') );
     }
 
     /**
@@ -39,13 +39,13 @@ class D_Contact_List_Table
      */
     public function d_contact_list_tbl_page()
     {
-        $differenzListTable = new Differenz_List_Table();
-        $differenzListTable->prepare_items();
+        $customListTable = new Custom_List_Table();
+        $customListTable->prepare_items();
         ?>
             <div class="wrap">
                 <div id="icon-users" class="icon32"></div>
-                <h2><?php esc_html_e('Differenz Contacts List', 'differenz-contacts'); ?></h2>
-                <?php $differenzListTable->display(); ?>
+                <h2><?php esc_html_e('Custom Contacts List', 'custom-contacts'); ?></h2>
+                <?php $customListTable->display(); ?>
             </div>
         <?php
     }
@@ -59,7 +59,7 @@ if( ! class_exists( 'WP_List_Table' ) ) {
 /**
  * Create a new table class that will extend the WP_List_Table
  */
-class Differenz_List_Table extends WP_List_Table
+class Custom_List_Table extends WP_List_Table
 {
     /**
      * Prepare the items for the table to process
