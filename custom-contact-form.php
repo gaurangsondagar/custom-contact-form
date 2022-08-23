@@ -7,7 +7,7 @@ Author: Gaurang Sondagar
 Version: 1.0
 Author URI: https://profiles.wordpress.org/
 License: GPLv2
-Text Domain: differenz-contacts
+Text Domain: custom-contacts-form
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
