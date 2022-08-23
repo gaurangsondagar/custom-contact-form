@@ -1,9 +1,9 @@
 /**
- * JS code for Differenz Contacts Plugin
+ * JS code for Custom Contacts Plugin
  */
 jQuery(document).ready(function() {
 
-	jQuery("#differenz-contact-frm").validate({
+	jQuery("#custom-contact-frm").validate({
 	  	rules: {
 	  		name: {
 	  			required: true,
@@ -34,7 +34,7 @@ jQuery(document).ready(function() {
 	  		jQuery.ajax({
 	  			url: DContactJS.adminurl,
 	  			type: 'post',
-	  			data: jQuery("#differenz-contact-frm").serialize(),
+	  			data: jQuery("#custom-contact-frm").serialize(),
 	  			beforeSend: function () { 
 					jQuery('.dfnz_btn_save').prop('disabled', true);
 				},
@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
 
 	  				jQuery('.d_contact_msg').html(res['msg']);
 	  				if (res['status'] == 1) {
-	  					jQuery('#differenz-contact-frm')[0].reset();
+	  					jQuery('#custom-contact-frm')[0].reset();
 	  				} else if(res['status'] == 0){
 	  					jQuery('.d_contact_msg').addClass('error');
 	  				}
