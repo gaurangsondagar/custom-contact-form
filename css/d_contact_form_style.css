@@ -1,0 +1,122 @@
+/** 
+ * Differenz Contact Form Styles
+ */
+.styled {
+	font-family: Arial, sans-serif;
+}
+
+.styled fieldset {
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.styled fieldset legend {
+	font-size: 16px;
+	font-weight: bold;
+	color: #000;
+	text-transform: capitalize;
+	padding: 5px;
+	background: #fff;
+	display: block;
+	margin-bottom: 0;
+	border: 1px solid #ccc;
+}
+
+.styled fieldset ol,
+.styled fieldset ol li {
+	list-style: none;
+}
+
+.button-row {
+	text-align: center;
+	margin-right: 70px;
+}
+
+.styled fieldset li.form-row {
+	margin-bottom: 3px;
+	padding: 2px 0;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.styled label {
+	font-size: 12px;
+	display: block;
+	font-weight: bold;
+	float: left;
+	width: 100px;
+	margin-left: 5px;
+	line-height: 24px;
+}
+
+.styled input.text-input,
+.styled .text-area {
+	background: #fefefe;
+	border-top: 1px solid #909090;
+	border-right: 1px solid #cecece;
+	border-bottom: 1px solid #e1e1e1;
+	border-left: 1px solid #bbb;
+	padding: 3px;
+	width: 220px;
+	font-size: 12px;
+}
+
+.styled input.text-input.default.active,
+.styled .text-area.default.active {
+	color: #666;
+	font-style: italic;
+}
+
+.styled fieldset li.button-row {
+	margin-bottom: 0;
+	padding: 2px 5px;
+}
+
+form input.btn-submit {
+	padding: 3px 7px;
+	border: 1px solid #fff;
+	background: #066CAA;
+	font-size: 12px;
+}
+
+.styled span.error {
+	font-size: 11px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: block;
+	padding: 2px;
+}
+
+.styled fieldset li.error {
+	color: #D8000C;
+	/*background: #fff0f0 url(../media/images/checkers.png) repeat;*/
+	border: 1px solid #f9c7c7;
+	padding: 5px 0;
+}
+
+.styled fieldset li.error label {
+	text-align: left;
+}
+
+.d_contact_wrap form label.error {
+    color: #f00;
+    width: 100%;
+    margin-left: 8.8em;
+}
+
+.d_contact_msg {
+	display: none;
+}
+
+.d_contact_msg {
+    color: green;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+}
+
+.d_contact_msg.error{
+	color: #f00;
+}
