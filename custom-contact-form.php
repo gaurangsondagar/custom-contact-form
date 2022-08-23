@@ -78,7 +78,7 @@ if (!class_exists('CustomContacts')):
 
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-            $table_name = $wpdb->prefix . "differenz_contact";  //get the database table prefix to create my new table
+            $table_name = $wpdb->prefix . "custom_contact";  //get the database table prefix to create my new table
 
             $sql = "CREATE TABLE $table_name (
               id int(10) unsigned NOT NULL AUTO_INCREMENT,
