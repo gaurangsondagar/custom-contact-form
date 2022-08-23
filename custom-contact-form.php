@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Differenz Contacts
+Plugin Name: Custom Contacts Form
 Plugin URI: https://wordpress.org/plugins/duplicate-page/
 Description: Duplicate Posts, Pages and Custom Posts using single click.
 Author: Gaurang Sondagar
