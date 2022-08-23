@@ -29,7 +29,7 @@ if ( !defined( 'D_CONTACTS_ADMIN_URL' ) ) {
 
 require_once '/inc/d-contact-list-table.php';
 
-if (!class_exists('DifferenzContacts')):
+if (!class_exists('CustomContacts')):
 
     /**
      * Main plugin class.
@@ -39,7 +39,7 @@ if (!class_exists('DifferenzContacts')):
      * @author  Gaurang Sondagar
      * @access public
      */
-    class DifferenzContacts
+    class CustomContacts
     {
 
         /**
@@ -51,11 +51,11 @@ if (!class_exists('DifferenzContacts')):
         public function __construct() 
         {
             register_activation_hook(__FILE__, array(&$this, 'd_contact_install'));
-            add_action('plugins_loaded', array(&$this, 'differenz_contacts_load_text_domain'));
-            add_shortcode('differenzcontacts', array(&$this, 'd_contact_form_ui'));
+            add_action('plugins_loaded', array(&$this, 'custom_contacts_load_text_domain'));
+            add_shortcode('customcontacts', array(&$this, 'd_contact_form_ui'));
             add_action('wp_enqueue_scripts', array($this, 'd_contact_form_assets'));
-            add_action('wp_ajax_save_differenz_contact', array($this, 'save_differenz_contact'));
-            add_action('wp_ajax_nopriv_save_differenz_contact', array($this, 'save_differenz_contact'));
+            add_action('wp_ajax_save_custom_contact', array($this, 'save_custom_contact'));
+            add_action('wp_ajax_nopriv_save_custom_contact', array($this, 'save_custom_contact'));
         }
 
 
@@ -66,9 +66,9 @@ if (!class_exists('DifferenzContacts')):
          * @since 1.0
          *
          */
-        public function differenz_contacts_load_text_domain()
+        public function custom_contacts_load_text_domain()
         {
-            load_plugin_textdomain('differenz-contacts', false, DUPLICATE_PAGE_PLUGIN_DIRNAME.'/languages');
+            load_plugin_textdomain('custom-contacts', false, DUPLICATE_PAGE_PLUGIN_DIRNAME.'/languages');
         }
 
         public function d_contact_install(){
