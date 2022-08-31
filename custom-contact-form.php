@@ -1,13 +1,12 @@
 <?php
 /*
 Plugin Name: Custom Contacts Form
-Plugin URI: https://wordpress.org/plugins/duplicate-page/
 Description: Duplicate Posts, Pages and Custom Posts using single click.
 Author: Gaurang Sondagar
 Version: 1.0
-Author URI: https://profiles.wordpress.org/
+Author URI: https://gaurangsondagar99.wordpress.com/
 License: GPLv2
-Text Domain: custom-contacts-form
+Text Domain: differenz-contacts
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if (!defined('D_CONTACTS_PLUGIN_DIRNAME')) {
-    define('D_CONTACTS_PLUGIN_DIRNAME', plugin_basename(dirname(__FILE__)));
+    // define('D_CONTACTS_PLUGIN_DIRNAME', plugin_basename(dirname(__FILE__)));
+    define('D_CONTACTS_PLUGIN_DIRNAME', plugin_dir_path(__FILE__));
 }
 if ( !defined( 'D_CONTACTS_PLUGIN_URL' ) ) {
     define( 'D_CONTACTS_PLUGIN_URL', WP_CONTENT_URL . '/plugins' );
@@ -27,9 +27,9 @@ if ( !defined( 'D_CONTACTS_ADMIN_URL' ) ) {
     define( 'D_CONTACTS_ADMIN_URL', admin_url() );
 }
 
-require_once '/inc/d-contact-list-table.php';
+require_once D_CONTACTS_PLUGIN_DIRNAME.'/inc/d-contact-list-table.php';
 
-if (!class_exists('CustomContacts')):
+if (!class_exists('DifferenzContacts')):
 
     /**
      * Main plugin class.
@@ -39,7 +39,7 @@ if (!class_exists('CustomContacts')):
      * @author  Gaurang Sondagar
      * @access public
      */
-    class CustomContacts
+    class DifferenzContacts
     {
 
         /**
@@ -51,11 +51,11 @@ if (!class_exists('CustomContacts')):
         public function __construct() 
         {
             register_activation_hook(__FILE__, array(&$this, 'd_contact_install'));
-            add_action('plugins_loaded', array(&$this, 'custom_contacts_load_text_domain'));
-            add_shortcode('customcontacts', array(&$this, 'd_contact_form_ui'));
+            add_action('plugins_loaded', array(&$this, 'differenz_contacts_load_text_domain'));
+            add_shortcode('differenzcontacts', array(&$this, 'd_contact_form_ui'));
             add_action('wp_enqueue_scripts', array($this, 'd_contact_form_assets'));
-            add_action('wp_ajax_save_custom_contact', array($this, 'save_custom_contact'));
-            add_action('wp_ajax_nopriv_save_custom_contact', array($this, 'save_custom_contact'));
+            add_action('wp_ajax_save_differenz_contact', array($this, 'save_differenz_contact'));
+            add_action('wp_ajax_nopriv_save_differenz_contact', array($this, 'save_differenz_contact'));
         }
 
 
@@ -66,19 +66,19 @@ if (!class_exists('CustomContacts')):
          * @since 1.0
          *
          */
-        public function custom_contacts_load_text_domain()
+        public function differenz_contacts_load_text_domain()
         {
-            load_plugin_textdomain('custom-contacts', false, DUPLICATE_PAGE_PLUGIN_DIRNAME.'/languages');
+            load_plugin_textdomain('differenz-contacts', false, D_CONTACTS_PLUGIN_DIRNAME.'/languages');
         }
 
         public function d_contact_install(){
             //installation code
 
-            /*global $wpdb;
+            global $wpdb;
 
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-            $table_name = $wpdb->prefix . "custom_contact";  //get the database table prefix to create my new table
+            $table_name = $wpdb->prefix . "differenz_contact";  //get the database table prefix to create my new table
 
             $sql = "CREATE TABLE $table_name (
               id int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -89,7 +89,7 @@ if (!class_exists('CustomContacts')):
               created_date datetime NOT NULL,
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
-            dbDelta( $sql );*/
+            dbDelta( $sql );
 
         }
 
@@ -103,7 +103,7 @@ if (!class_exists('CustomContacts')):
         public function d_contact_form_ui()
         {
             ob_start();
-            require_once '/inc/d-contact-form.php';
+            require_once D_CONTACTS_PLUGIN_DIRNAME.'/inc/d-contact-form.php';
             return ob_get_clean();
         }
        
@@ -165,7 +165,7 @@ if (!class_exists('CustomContacts')):
 
                 if($ins_d_contact){
 
-                    $output['msg'] = __('Message Has Been Sent Successfully!', 'differenz-contacts');
+                    $output['msg'] = __('Message Sent Successfully!', 'differenz-contacts');
                     $output['status'] = 1;
 
                 }
